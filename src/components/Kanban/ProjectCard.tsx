@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { GripVertical } from 'lucide-react';
@@ -14,6 +15,7 @@ const priorityColors = {
 };
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+    const [isExpanded, setIsExpanded] = useState(false);
     const {
         attributes,
         listeners,
@@ -57,9 +59,20 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                     </div>
 
                     {/* Description */}
-                    <p className="text-sm text-codeflow-text-muted line-clamp-3">
-                        {project.description}
-                    </p>
+                    <div className="relative">
+                        <p className={`text-sm text-codeflow-text-muted ${isExpanded ? '' : 'line-clamp-3'}`}>
+                            {project.description}
+                        </p>
+                        {project.description.length > 100 && (
+                            <button
+                                onClick={() => setIsExpanded(!isExpanded)}
+                                onPointerDown={(e) => e.stopPropagation()}
+                                className="text-xs text-codeflow-accent hover:text-codeflow-accent/80 mt-1 font-medium focus:outline-none"
+                            >
+                                {isExpanded ? 'Ver menos' : 'Ver más'}
+                            </button>
+                        )}
+                    </div>
 
                     {/* Stack */}
                     {project.stack.length > 0 && (
