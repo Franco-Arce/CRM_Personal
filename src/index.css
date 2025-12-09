@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-codeflow-border;
+  }
+  
+  body {
+    @apply bg-codeflow-bg text-codeflow-text antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-codeflow-card rounded-lg border border-codeflow-border p-4 shadow-lg;
+  }
+
+  .btn-primary {
+    @apply bg-codeflow-accent hover:bg-codeflow-accent-hover text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-codeflow-hover hover:bg-codeflow-border text-codeflow-text font-medium px-4 py-2 rounded-lg transition-colors duration-200;
+  }
+
+  .input-field {
+    @apply bg-codeflow-bg border border-codeflow-border text-codeflow-text rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-codeflow-accent transition-all;
+  }
+
+  .badge {
+    @apply px-2 py-1 rounded-md text-xs font-semibold;
+  }
+}
